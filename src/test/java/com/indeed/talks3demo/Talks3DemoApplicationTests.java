@@ -30,14 +30,14 @@ public class Talks3DemoApplicationTests {
     }
 
     @Test
-    public void helloEndpoint_returnsHelloWorldResponse() {
+    public void index_returnsHelloWorldPage() {
         RequestEntity<Void> request = RequestEntity
-                .get(URI.create("http://localhost:" + port + "/hello"))
+                .get(URI.create("http://localhost:" + port + "/"))
                 .build();
 
         ResponseEntity<String> response = restTemplate.exchange(request, String.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody()).isEqualTo("Hello world");
+        assertThat(response.getBody()).contains("Hello world");
     }
 }
